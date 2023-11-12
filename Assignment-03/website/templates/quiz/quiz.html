@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-light mt-3">
+    <button class="btn btn-warning" type="button"><a href="{% url 'set_category' %}" style="text-decoration: none;border: none;" class="text-white" >Create section </a> </button>
+    <button class="btn btn-warning" type="button"><a href="{% url 'make_question' %}" style="text-decoration: none;border: none;" class="text-white">Add questions under a section </a> </button>
+    <button class="btn btn-warning" type="button"><a href="{% url 'edit_quiz' %}" style="text-decoration: none;border: none;" class="text-white">Edit your quiz </a> </button>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if status == True %}
+<div class="container  ">
+    <table class="table position-relative bg-light mt-5  w-75 " style="left:100px;">
+        <thead>
+          <tr>
+            
+            <th scope="col">Select Your Quiz Category </th>
+            <th scope="col">Action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr> 
+            {% for i in quiz_section %}     
+            <td>{{i.category}}</td> 
+            <td><button class="btn btn-danger btn-sm" type="button"><a href="{% url 'edit_quiz_question' i.pk %}" style="text-decoration: none;" class="text-white" >Select</a> </button></td>    
+          </tr>
+        </tbody>
+
+          {% endfor %}
+
+</div>
+{% else %}
+<p style="position:absolute;left:100px;top:100px; font-weight: 700; ">You did not create any questions</p>
+{% endif %}
+{% endblock %}

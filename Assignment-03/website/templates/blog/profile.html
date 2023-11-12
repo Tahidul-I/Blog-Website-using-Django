@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="text-center">
+        {% if status == True %}
+        <img src="/media/{{data.profile_pic}}" class="rounded float-start" height="200px" width="200px">
+      </div><br>
+      {% else %}
+      <img src="/media/User-Profile-PNG.png" class="rounded float-start" height="200px" width="200px">
+    </div><br>
+    {% endif %}
+    <div class="data">
+        <p> Name : {{data.first_name}} {{data.last_name}}</p>
+        <p>Email : {{data.user_acc.email}}</p>
+        <p>Account Type: {{data.user_acc.user_type.type}} </p>
+    </div>
+
+
+</div>
+<div class="container info">
+    {% if status == True %}
+<button class="btn btn-warning"><a href="{% url 'edit_profile'%}" style="text-decoration: none;" class="text-white">Edit Your Profile</a></button> 
+{% else %}
+<p><P>We recommend you to complete your profile information for visibility</P></p>
+<button class="btn btn-warning"><a href="{% url 'create_profile' %}" style="text-decoration: none;" class="text-white">Create Your Profile</a></button>
+{% endif %}
+</div>
+
+
+
+{% endblock %}

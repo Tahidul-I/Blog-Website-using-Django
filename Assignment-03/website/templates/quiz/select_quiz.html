@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container  " style="text-align: center;">
+    {% if status %}
+    <table class="table position-relative bg-light mt-5  w-75 " style="left:100px;">
+        <caption style="font-weight: 700;">Select Quiz Category </caption>
+        <thead>
+          <tr>
+            
+            <th scope="col">Quiz Category</th>
+            <th scope="col"> Action</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in quiz_cat %}
+          <tr>
+            <td>{{ i.category }}</td>      
+             
+            <td><button class="btn btn-danger btn-sm" type="button"><a href="{% url 'exam_quiz' i.id %}" style="text-decoration: none;" class="text-white" >Take quiz </a> </button></td>    
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}    
+    <p><b>Teacher yet to set quiz</b></p>
+    {% endif %}
+          
+
+</div>
+
+{% endblock %}

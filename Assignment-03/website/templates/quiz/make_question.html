@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container  bg-light">
+    <b><p>If you Can not select any question title, you must add a question title in the create section. The question you are creating now will be added under the question title that you have selected</p></b>
+    <form method="post" action="{% url 'question_save' %}" >
+        {% csrf_token %}
+        <!-- <p><label for="chitoi"><input type="radio" name="django" id="chitoi" value="chitoi"> chitoi</label></p>
+        <p><label for="Vapa"><input type="radio" name="django" id="Vapa" value="Vapa"> Vapa</label></p>
+        <p><label for="tel"><input type="radio" name="django2" id="tel" value="Tel"> Tel</label></p>
+        <p><label for="sukna"><input type="radio" name="django2" id="sukna" value="Sukna">Sukna</label></p> -->
+       {% if status == True %}
+       <div class="form-group">
+        <label>Select question title</label>
+        <select class="form-select" aria-label="Default select example" name="title">
+            <option selected>Select</option>
+            {% for i in quiz_type %}
+            <option value="{{i.category}}">{{i.category}}</option>  
+            {% endfor %}            
+        </select>
+  </div><br>
+       {% else %}
+       <div class="form-group">
+        <label>Select question title</label>
+        <select class="form-select" aria-label="Default select example" required>
+            <option ></option>            
+        </select>
+  </div><br>
+  {% endif %}
+      <div class="form-group">
+          <label>Set question</label>
+          <input type="text" name="question" class="form-control" placeholder="Write your question here">
+      </div><br> 
+      <div class="form-group">
+        <label>Option-1</label>
+        <input type="text" name="option_1" class="form-control" placeholder="Write your option">
+    </div><br> 
+    <div class="form-group">
+      <label>Option-2</label>
+      <input type="text" name="option_2" class="form-control" placeholder="Write your option">
+    </div><br> 
+    <div class="form-group">
+      <label>Option-3</label>
+      <input type="text" name="option_3" class="form-control" placeholder="Write your option">
+    </div><br> 
+    <div class="form-group">
+      <label>Option-4</label>
+      <input type="text" name="option_4" class="form-control" placeholder="Write your option">
+    </div><br> 
+      <select class="form-select" aria-label="Default select example" name="answer">
+        <option selected>Select answer of the question</option>
+        <option>Option-1</option>
+        <option >Option-2</option>
+        <option >Option-3</option>
+        <option >Option-4</option>
+        
+        
+        
+      </select><br>
+      
+
+
+          
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+
+{% block content %}
+{% for i in blog_items %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-4">
+            <h3>{{i.blog_title}}</h3>
+            <img src="/media/{{i.blog_image}}" height="200px" width="200px">
+            <p>Published on :&nbsp; {{i.published_data}}</p>
+    
+    
+    
+        </div>
+        <div class='col-8'>
+            {{i.blog_content |custom_filter | linebreaks}}
+            <a href="{% url 'read_blog' i.id %}" style="text-decoration: none;">Read more.........</a>
+    
+        </div>
+    
+    </div>
+    <hr>
+</div>
+{% endfor %}
+
+{% endblock %}

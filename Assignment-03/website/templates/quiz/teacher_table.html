@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container  " style="text-align: center;">
+    <table class="table position-relative bg-light mt-5  w-75 " style="left:100px;">
+        <caption style="font-weight: 700;">Select your teacher under whom you want to submit the quiz </caption>
+        <thead>
+          <tr>
+            
+            <th scope="col">Teacher profile</th>
+            <th scope="col"> Teacher Name</th>
+            <th scope="col">Action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr> 
+            {% for i in teacher_data %}
+            {% if i.user_profile.profile_pic %}
+            <td><img src="/media/{{i.user_profile.profile_pic}}" height="100px" width="100px"></td>
+            {% else %}
+            <td><img src="/media/User-Profile-PNG.png" height="100px" width="100px"></td>
+            {% endif %}
+            {% if i.user_profile.first_name %}
+            <td>{{i.user_profile.first_name}}&nbsp;{{i.user_profile.last_name}}</td> 
+            {% else %}
+            <td>Profile yet to update</td>
+            {% endif %}     
+             
+            <td><button class="btn btn-danger btn-sm" type="button"><a href="{% url 'select_quiz_category' i.id %}" style="text-decoration: none;" class="text-white" >Select </a> </button></td>    
+          </tr>
+          {% endfor %}
+
+</div>
+
+{% endblock %}

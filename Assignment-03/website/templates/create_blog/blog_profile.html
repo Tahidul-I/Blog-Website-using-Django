@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <div class="text-center">
+       
+        <img src="/media/{{user.user_profile.profile_pic}}" class="rounded float-start" height="200px" width="200px">
+      </div><br>
+      
+      
+    </div><br>
+   
+    <div class="data">
+        <p> Name : {{user.user_profile.first_name}} {{user.user_profile.last_name}}</p>
+        <p>Email : {{user.email}}</p>
+    </div>
+    
+</div>
+<hr>
+<div style="position: absolute; left:50px; top:315px">
+    {% for i in data %}
+    <div class="row">
+        <div class="col-4">
+            <h3>{{i.blog_title}}</h3>
+            <img src="/media/{{i.blog_image}}" height="200px" width="200px">
+            <p>Published on :&nbsp; {{i.published_data}}</p>   
+        </div>
+        <div class='col-8'>
+            {{i.blog_content |custom_filter | linebreaks}}
+            <a href="{% url 'read_blog' i.id %}" style="text-decoration: none;">Read more.........</a>
+    
+        </div>
+    
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+   
+
+
+    
+
+
+
+{% endblock %}

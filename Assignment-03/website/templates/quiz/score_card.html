@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container  " style="text-align: center;">
+
+    <table class="table position-relative bg-light mt-5  w-75 " style="left:100px;">
+        
+        <thead>
+          <tr>
+            
+            <th scope="col">Quiz Topic</th>
+            <th scope="col"> Teacher Name</th>
+            <th scope="col"> Total Marks</th>
+            <th scope="col"> Your score</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in score_details %}
+          <tr>
+            <td>{{ i.ques_category.category }}</td> 
+            <td>{{ i.ques_category.under_whom }}</td> 
+            <td>{{ i.total_quiz_score }}</td>  
+            <td>{{ i.score }}</td>           
+             
+               
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+ 
+    
+          
+
+</div>
+
+{% endblock %}

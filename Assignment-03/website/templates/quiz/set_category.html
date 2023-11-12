@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container  bg-light mt-3">
+    <form method="post" action="{% url 'set_category' %}" >
+        {% csrf_token %}
+        <!-- <p><label for="chitoi"><input type="radio" name="django" id="chitoi" value="chitoi"> chitoi</label></p>
+        <p><label for="Vapa"><input type="radio" name="django" id="Vapa" value="Vapa"> Vapa</label></p>
+        <p><label for="tel"><input type="radio" name="django2" id="tel" value="Tel"> Tel</label></p>
+        <p><label for="sukna"><input type="radio" name="django2" id="sukna" value="Sukna">Sukna</label></p> -->
+        <div class="form-group">
+          <label>Quiz Titile </label>
+          <input type="text" name="title" class="form-control" placeholder="Quiz on what? ">
+      </div><br>
+      <div class="form-group">
+          <label>Set mark</label>
+          <input type="number" name="mark" class="form-control" placeholder="Set mark for each question for this section">
+      </div><br> 
+    
+    
+
+
+          
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock %}
